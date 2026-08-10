@@ -1,0 +1,79 @@
+---
+interface Props {
+  scrollY?: number;
+}
+const { scrollY = 0 } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 {scrollY > 20 ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'}">
+  <nav class="container-custom" aria-label="Main navigation">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <a href="/" class="flex items-center gap-2" aria-label="The Jaipur Event Co - Home">
+        <span class="text-2xl md:text-3xl font-heading font-medium text-terracotta-900">The Jaipur Event Co</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-medium text-cream-700 hover:text-terracotta-600 transition-colors">About</a>
+        <a href="#services" class="text-sm font-medium text-cream-700 hover:text-terracotta-600 transition-colors">Services</a>
+        <a href="#gallery" class="text-sm font-medium text-cream-700 hover:text-terracotta-600 transition-colors">Gallery</a>
+        <a href="#testimonials" class="text-sm font-medium text-cream-700 hover:text-terracotta-600 transition-colors">Reviews</a>
+        <a href="#contact" class="btn-primary text-sm px-6 py-2">Plan Your Event</a>
+      </div>
+
+      <button class="md:hidden p-2 text-cream-700" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-out bg-white border-t border-cream-200">
+      <div class="py-4 space-y-4 px-4">
+        <a href="#about" class="block text-base font-medium text-cream-700 hover:text-terracotta-600">About</a>
+        <a href="#services" class="block text-base font-medium text-cream-700 hover:text-terracotta-600">Services</a>
+        <a href="#gallery" class="block text-base font-medium text-cream-700 hover:text-terracotta-600">Gallery</a>
+        <a href="#testimonials" class="block text-base font-medium text-cream-700 hover:text-terracotta-600">Reviews</a>
+        <a href="#contact" class="btn-primary w-full justify-center mt-2">Plan Your Event</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  const header = document.querySelector('header');
+  const menuBtn = header?.querySelector('button[aria-controls="mobile-menu"]');
+  const mobileMenu = header?.querySelector('#mobile-menu');
+
+  let lastScrollY = 0;
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > 20) {
+      header?.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+      header?.classList.remove('bg-transparent');
+    } else {
+      header?.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+      header?.classList.add('bg-transparent');
+    }
+    lastScrollY = currentScrollY;
+  });
+
+  menuBtn?.addEventListener('click', () => {
+    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    if (!isExpanded) {
+      mobileMenu?.classList.remove('max-h-0');
+      mobileMenu?.classList.add('max-h-96');
+    } else {
+      mobileMenu?.classList.add('max-h-0');
+      mobileMenu?.classList.remove('max-h-96');
+    }
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.add('max-h-0');
+      mobileMenu?.classList.remove('max-h-96');
+    });
+  });
+</script>

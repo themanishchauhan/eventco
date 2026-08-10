@@ -1,0 +1,87 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Service {
+  title: string;
+  icon: string;
+  description: string;
+  features: string[];
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  services?: Service[];
+}
+const { 
+  title = 'Our Services',
+  subtitle = 'Bespoke event experiences crafted with precision and passion',
+  services = [
+    {
+      title: 'Wedding Design & Management',
+      icon: 'lucide:heart',
+      description: 'End-to-end wedding planning from venue selection to day-of coordination. We handle vendor management, timeline creation, budget oversight, and every detail in between.',
+      features: ['Venue scouting & booking', 'Vendor curation & management', 'Design & decor conceptualization', 'Timeline & logistics planning', 'Day-of coordination', 'Guest experience management']
+    },
+    {
+      title: 'Corporate & Brand Events',
+      icon: 'lucide:briefcase',
+      description: 'Strategic event design for conferences, product launches, retreats, and brand activations. We align every touchpoint with your brand identity and business objectives.',
+      features: ['Conference & summit management', 'Product launch experiences', 'Corporate retreats & offsites', 'Brand activation & experiential', 'Award ceremonies & galas', 'Virtual & hybrid events']
+    },
+    {
+      title: 'Cultural & Social Celebrations',
+      icon: 'lucide:sparkles',
+      description: 'Intimate gatherings that honor tradition while embracing modern elegance. Festivals, anniversaries, engagements, and milestone celebrations with cultural authenticity.',
+      features: ['Festival celebrations', 'Anniversary & milestone events', 'Engagement & pre-wedding functions', 'Cultural & religious ceremonies', 'Private dinner parties', 'Destination celebrations']
+    },
+    {
+      title: 'Decor & Styling',
+      icon: 'lucide:flower-2',
+      description: 'Standalone decor services for clients with existing venues. Floral design, mandap creation, lighting design, tablescapes, and thematic styling.',
+      features: ['Floral & botanical design', 'Mandap & stage design', 'Lighting & ambiance design', 'Tablescapes & place settings', 'Thematic & conceptual styling', 'Furniture & prop rental']
+    }
+  ]
+} = Astro.props;
+---
+
+<section id="services" class="section bg-cream-50" aria-labelledby="services-title">
+  <div class="container-custom">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block px-3 py-1 rounded-full bg-terracotta-100 text-terracotta-700 text-sm font-medium mb-4">What We Do</span>
+      <h2 id="services-title" class="section-title">{title}</h2>
+      <p class="section-subtitle mx-auto">{subtitle}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map((service, i) => (
+        <article class="service-card group animate-slide-up" style={`animation-delay: ${i * 100}ms`}>
+          <div class="w-14 h-14 mx-auto mb-6 rounded-xl bg-terracotta-100 text-terracotta-600 flex items-center justify-center group-hover:bg-terracotta-600 group-hover:text-cream-50 transition-all duration-300">
+            <Icon name={service.icon} class="w-7 h-7" aria-hidden="true" />
+          </div>
+          <h3 class="font-heading text-xl font-medium text-terracotta-900 mb-3">{service.title}</h3>
+          <p class="text-cream-600 text-sm leading-relaxed mb-6">{service.description}</p>
+          <ul class="space-y-2 text-left text-sm text-cream-600" role="list">
+            {service.features.map(feature => (
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-gold-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center mt-12 animate-fade-in" style="animation-delay: 400ms">
+      <a href="#contact" class="btn-primary inline-flex items-center gap-2">
+        Discuss Your Event
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
