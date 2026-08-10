@@ -14,7 +14,7 @@ const gallery = defineCollection({
 });
 
 const testimonials = defineCollection({
-  type: 'content',
+  type: 'data',
   schema: z.object({
     clientName: z.string(),
     eventType: z.string(),

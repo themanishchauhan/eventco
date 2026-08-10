@@ -1,8 +1,0 @@
----
-clientName: "Ananya & Devraj Mehta"
-eventType: "Royal Sangeet & Reception"
-quote: "Their floral styling and lighting setup transformed Leela Palace into a fairy tale. Our guests are still talking about the grand entrance and stage decor weeks later!"
-rating: 5
-featured: true
-order: 4
----
