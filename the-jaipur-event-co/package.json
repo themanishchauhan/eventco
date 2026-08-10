@@ -1,0 +1,31 @@
+{
+  "name": "the-jaipur-event-co",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync": "astro sync",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .astro,.js,.ts"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "astro-icon": "^1.1.0",
+    "glightbox": "^3.3.0",
+    "lucide-react": "^0.460.0",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/glightbox": "^3.0.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  }
+}
