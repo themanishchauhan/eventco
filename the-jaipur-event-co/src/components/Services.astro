@@ -1,9 +1,7 @@
 ---
-import { Icon } from 'astro-icon';
-
 interface Service {
   title: string;
-  icon: string;
+  icon: 'heart' | 'briefcase' | 'sparkles' | 'flower';
   description: string;
   features: string[];
 }
@@ -19,25 +17,25 @@ const {
   services = [
     {
       title: 'Wedding Design & Management',
-      icon: 'lucide:heart',
+      icon: 'heart',
       description: 'End-to-end wedding planning from venue selection to day-of coordination. We handle vendor management, timeline creation, budget oversight, and every detail in between.',
       features: ['Venue scouting & booking', 'Vendor curation & management', 'Design & decor conceptualization', 'Timeline & logistics planning', 'Day-of coordination', 'Guest experience management']
     },
     {
       title: 'Corporate & Brand Events',
-      icon: 'lucide:briefcase',
+      icon: 'briefcase',
       description: 'Strategic event design for conferences, product launches, retreats, and brand activations. We align every touchpoint with your brand identity and business objectives.',
       features: ['Conference & summit management', 'Product launch experiences', 'Corporate retreats & offsites', 'Brand activation & experiential', 'Award ceremonies & galas', 'Virtual & hybrid events']
     },
     {
       title: 'Cultural & Social Celebrations',
-      icon: 'lucide:sparkles',
+      icon: 'sparkles',
       description: 'Intimate gatherings that honor tradition while embracing modern elegance. Festivals, anniversaries, engagements, and milestone celebrations with cultural authenticity.',
       features: ['Festival celebrations', 'Anniversary & milestone events', 'Engagement & pre-wedding functions', 'Cultural & religious ceremonies', 'Private dinner parties', 'Destination celebrations']
     },
     {
       title: 'Decor & Styling',
-      icon: 'lucide:flower-2',
+      icon: 'flower',
       description: 'Standalone decor services for clients with existing venues. Floral design, mandap creation, lighting design, tablescapes, and thematic styling.',
       features: ['Floral & botanical design', 'Mandap & stage design', 'Lighting & ambiance design', 'Tablescapes & place settings', 'Thematic & conceptual styling', 'Furniture & prop rental']
     }
@@ -57,7 +55,26 @@ const {
       {services.map((service, i) => (
         <article class="service-card group animate-slide-up" style={`animation-delay: ${i * 100}ms`}>
           <div class="w-14 h-14 mx-auto mb-6 rounded-xl bg-terracotta-100 text-terracotta-600 flex items-center justify-center group-hover:bg-terracotta-600 group-hover:text-cream-50 transition-all duration-300">
-            <Icon name={service.icon} class="w-7 h-7" aria-hidden="true" />
+            {service.icon === 'heart' && (
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            )}
+            {service.icon === 'briefcase' && (
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            )}
+            {service.icon === 'sparkles' && (
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            )}
+            {service.icon === 'flower' && (
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 2a4 4 0 00-4 4 4 4 0 00-1.5 7.7 4 4 0 004 7.3 4 4 0 004-7.3A4 4 0 0016 6a4 4 0 00-4-4z" />
+              </svg>
+            )}
           </div>
           <h3 class="font-heading text-xl font-medium text-terracotta-900 mb-3">{service.title}</h3>
           <p class="text-cream-600 text-sm leading-relaxed mb-6">{service.description}</p>
