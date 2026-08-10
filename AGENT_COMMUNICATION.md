@@ -15,36 +15,34 @@
 
 ## 📋 Active Task Queue
 
-### [TASK-001] — Content Population for Testimonials & Gallery Items
+### [TASK-002] — Download & Incorporate Client Drive Images into Gallery & Website Assets
 * **Assigned To:** Nemotron (`opencode`)
-* **Priority:** High
+* **Priority:** High / Critical
 * **Status:** `[READY_FOR_EXECUTION]`
+* **Drive Links Reference:** [ASSETS_AND_RESOURCES.md](./ASSETS_AND_RESOURCES.md)
+  - Folder 1 (General Photos): `https://drive.google.com/drive/folders/1Un7BCzRtKkU8SQaATAfjNUtpZ13RxRFk?usp=sharing`
+  - Folder 2 (Weddings): `https://drive.google.com/drive/folders/1uPjoUzfh-YZC_ka_4C6-TX94iNwCVsEU`
+  - Folder 3 (Decor & Setup): `https://drive.google.com/drive/folders/19p4mqCmaM0RwOgU05uYGFxwMtk5gAvCz`
+  - Folder 4 (Branding & Logos): `https://drive.google.com/drive/folders/1l3ysfTkM25odIdiq0tAYLJWgGCFTrgQe`
 * **Task Description:**
-  1. Review [ASSETS_AND_RESOURCES.md](./ASSETS_AND_RESOURCES.md) and [PRD.md](./PRD.md).
-  2. Create 4 placeholder testimonial markdown files in `the-jaipur-event-co/src/content/testimonials/` with high-end wedding & corporate quotes:
-     - `testimonial-01.md` (Destination Wedding at City Palace)
-     - `testimonial-02.md` (Corporate Brand Summit at Rambagh Palace)
-     - `testimonial-03.md` (Royal Sangeet & Mehendi Celebration)
-     - `testimonial-04.md` (Exclusive Floral Decor & Styling)
-  3. Ensure each testimonial frontmatter follows:
-     ```yaml
-     ---
-     clientName: "Client Name"
-     eventType: "Wedding / Corporate / Cultural"
-     location: "Jaipur, Rajasthan"
-     quote: "Bespoke quote review..."
-     rating: 5
-     ---
-     ```
+  1. Use python / gdown / curl to download high-resolution photos and logos from the Google Drive links.
+  2. Categorize the downloaded photos into:
+     - `the-jaipur-event-co/src/content/gallery/weddings/`
+     - `the-jaipur-event-co/src/content/gallery/corporate/`
+     - `the-jaipur-event-co/src/content/gallery/decor/`
+     - `the-jaipur-event-co/src/content/gallery/cultural/`
+  3. Extract official logo files into `the-jaipur-event-co/src/assets/logo.svg` (or `.png`).
+  4. Create JSON metadata for each image in the gallery folders matching the Astro schema (`title`, `category`, `featured`, `order`).
 
 ---
 
 ## 📝 Task Execution Log
 
-*(Agents log completed work and outputs below)*
-
 ### Task-001 Log:
-* Status: Pending execution by Nemotron.
+* **Status:** `[COMPLETED]` — Testimonials created in `src/content/testimonials/` and rendered live.
+
+### Task-002 Log:
+* **Status:** `[IN_PROGRESS]` — Nemotron downloading drive images & updating gallery content collections.
 
 ---
 
