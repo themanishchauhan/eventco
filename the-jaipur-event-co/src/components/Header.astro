@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 interface Props {
   scrollY?: number;
 }
@@ -9,7 +11,7 @@ const { scrollY = 0 } = Astro.props;
   <nav class="container-custom" aria-label="Main navigation">
     <div class="flex items-center justify-between h-16 md:h-20">
       <a href="/" class="flex items-center gap-2" aria-label="The Jaipur Event Co - Home">
-        <span class="text-2xl md:text-3xl font-heading font-medium text-terracotta-900">The Jaipur Event Co</span>
+        <Logo width={36} height={36} showText={true} />
       </a>
 
       <div class="hidden md:flex items-center gap-8">

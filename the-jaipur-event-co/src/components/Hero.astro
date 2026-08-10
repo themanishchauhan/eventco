@@ -5,16 +5,32 @@ import heroImage from '../assets/hero.jpg';
 interface Props {
   headline?: string;
   subheadline?: string;
+  videoSrc?: string;
 }
 const { 
   headline = 'Crafting Timeless Celebrations in the Pink City',
-  subheadline = "Jaipur's premier event design & management studio. Weddings • Corporate • Cultural"
+  subheadline = "Jaipur's premier event design & management studio. Weddings • Corporate • Cultural",
+  videoSrc
 } = Astro.props;
 ---
 
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-title">
   <div class="absolute inset-0 z-0">
-    <Image src={heroImage} alt="" class="w-full h-full object-cover" priority loading="eager" fetchpriority="high" />
+    {videoSrc ? (
+      <video 
+        class="w-full h-full object-cover" 
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+        poster={heroImage.src}
+        aria-hidden="true"
+      >
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+    ) : (
+      <Image src={heroImage} alt="" class="w-full h-full object-cover" priority loading="eager" fetchpriority="high" />
+    )}
     <div class="absolute inset-0 bg-gradient-to-t from-terracotta-900/70 via-terracotta-900/20 to-transparent" aria-hidden="true"></div>
   </div>
 
