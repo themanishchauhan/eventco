@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import icon from 'astro-icon';
 
 export default defineConfig({
   site: 'https://thejaipureventco.com',
-  integrations: [tailwind(), icon()],
+  devToolbar: {
+    enabled: false
+  },
+  integrations: [tailwind()],
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp'
